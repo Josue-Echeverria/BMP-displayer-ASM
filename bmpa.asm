@@ -166,7 +166,7 @@ GetCommanderLine EndP
 						;Toma el color y va preguntando uno por uno los posibles colores que existen en el formato de la imagen que en total serian 16 
 
 print_char_pixel proc near
-
+	
 	push cx				;guarda el valor de cx  -guarda los registros de la pila
 	push dx				;guarda el valor de dx  -guarda los registros de la pila
 	push ax				;guarda el valor de ax  -guarda los registros de la pila
