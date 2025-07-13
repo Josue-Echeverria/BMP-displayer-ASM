@@ -172,11 +172,11 @@ print_char_pixel proc near
 	push ax				;guarda el valor de ax  -guarda los registros de la pila
 	push bx				;guarda el valor de bx  -guarda los registros de la pila
 	
-	mov al, char        		;En la variable char se encuentra el color
+	mov al, char        ;En la variable char se encuentra el color
 	cmp ax, 0h 			;Se pregunta si el ax es igual a 0, y salte a "prueba"
 						;Pregunta si el color que esta en el ax es 0 "negro"
-	mov char, 02eh			;Mueve el char al 02eh que equivale a un caracter en ascii 
-	je prueba				;Finalmente salta a la etiqueta prueba si es igual a 0
+	mov char, 02eh		;Mueve el char al 02eh que equivale a un caracter en ascii 
+	je prueba			;Finalmente salta a la etiqueta prueba si es igual a 0
 	
 	cmp ax, 01h    			;Cantidad de posibles comparaciones de los colores,  compara ax con 01h
 	mov char, 025h 			;Mueve a la variable char un punto
@@ -244,17 +244,17 @@ sig:
 	
 	cmp ax, 0fh
 	mov char, 040h			
-	je paint_char					;salto a la etiqueta paint_char si es igual a 0			
+	je paint_char				;salto a la etiqueta paint_char si es igual a 0			
 								;Etiqueta que ejecuta la interrupcion 40h (escritura del archivo)
 								;Lo que hace es escribir en el archivo los colores con su valor en caracteres 	
 paint_char:
 
-	xor ax, ax						;Limpia el ax 
-	mov ah, 040h 					;escribe sobre el archivo
+	xor ax, ax					;Limpia el ax 
+	mov ah, 040h 				;escribe sobre el archivo
 	mov bx, handle_image_chars
 	xor cx, cx 					;Numero de bytes a escribir /Solo escribo un solo byte
-	inc cx		    				;Lo incrementa en una unidad 
-	mov dx, offset char  				;Desplazamiento del buffer desde donde se toman los caracteres a escribir
+	inc cx		    			;Lo incrementa en una unidad 
+	mov dx, offset char  		;Desplazamiento del buffer desde donde se toman los caracteres a escribir
 								;En la variable char va a estar el codigo en caracter 
 	int 21h						;Interrupcion al DOS para devolver el control SO
 
@@ -263,7 +263,7 @@ paint_char:
 	pop dx
 	pop cx
 	ret							;para volver del procedimiento al programa principal
-endp								;aquí termina el procedimiento
+endp							;aquí termina el procedimiento
 
 notfound:
 	mov dx, offset no_archivo		;Mensaje de ayuda para el usuario	
